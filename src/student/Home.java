@@ -15,7 +15,8 @@ import javax.swing.table.DefaultTableModel;
  * @author Admins
  */
 public class Home extends javax.swing.JFrame {
-
+    
+    Student student = new Student();
     int xx, xy;
     
     private DefaultTableModel model;
@@ -232,6 +233,8 @@ public class Home extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(151, 183, 222));
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 255), 4, true));
 
+        jTextField1.setEditable(false);
+        jTextField1.setBackground(new java.awt.Color(204, 204, 204));
         jTextField1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jTextField2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -1613,6 +1616,7 @@ public class Home extends javax.swing.JFrame {
     public void init()
     {
         tableViewStudent();
+        jTextField1.setText(String.valueOf(student.getMax()));
     }
     
     private void tableViewStudent()
@@ -1626,6 +1630,7 @@ public class Home extends javax.swing.JFrame {
     
     private void clearStudent()
     {
+        jTextField1.setText(String.valueOf(student.getMax()));
         jTextField1.setText(null);
         jTextField2.setText(null);
         jTextField3.setText(null);
