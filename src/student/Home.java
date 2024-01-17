@@ -53,6 +53,7 @@ public class Home extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
@@ -225,19 +226,19 @@ public class Home extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(151, 183, 222));
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 255), 4, true));
 
-        jTextField1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jTextField1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
-        jTextField2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jTextField2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
-        jTextField6.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jTextField6.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
-        jTextField7.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jTextField7.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
-        jTextField8.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jTextField8.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jDateChooser1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
-        jComboBox1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jComboBox1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -270,11 +271,11 @@ public class Home extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(151, 183, 222));
         jPanel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 255), 4, true));
 
-        jButton1.setBackground(new java.awt.Color(153, 153, 255));
+        jButton1.setBackground(new java.awt.Color(204, 204, 255));
         jButton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jButton1.setText("Browse");
 
-        jPanel7.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel7.setBackground(new java.awt.Color(204, 204, 255));
         jPanel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 153, 255), 4, true));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -283,16 +284,21 @@ public class Home extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        jLabel23.setBackground(new java.awt.Color(204, 204, 255));
+        jLabel23.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setText("Image");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -300,22 +306,30 @@ public class Home extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                    .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
-            .addGroup(jPanel6Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16)))
                 .addContainerGap())
         );
+
+        jTextField3.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+
+        jTextField4.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -336,8 +350,8 @@ public class Home extends javax.swing.JFrame {
                                     .addComponent(jLabel9)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel5)))
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel2)))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -668,18 +682,19 @@ public class Home extends javax.swing.JFrame {
         jComboBox2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jComboBox5.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "C/C++ Programming", "Object-Oriented Programming", "Object-Oriented analysis & design", "Algorithms and Data Structures", "Web Application Development" }));
 
         jComboBox6.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Physics 1", "Physics 2", "Physics 3", "Physics 3 Laboratory", "Physics 4" }));
 
         jComboBox7.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Listening AE1", "Writing AE1", "Speaking AE2", "Writing AE2", "Physical Training 1 & 2" }));
 
         jComboBox8.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Calculus 1", "Calculus 2", "Calculus 3", "Probability, Statistic & Random Process", "Discrete Mathematics", "Linear Algebra" }));
 
         jComboBox9.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Philosophy Marx-Lenin", "Marxist-Leninist Political Economy", "Scientific Socialism", "History of Vietnamese Communist Party", "Ho Chi Minh's Thoughts" }));
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -1046,8 +1061,8 @@ public class Home extends javax.swing.JFrame {
                                     .addComponent(jLabel34)
                                     .addComponent(jLabel28)
                                     .addComponent(jLabel27)
-                                    .addComponent(jLabel26)
-                                    .addComponent(jLabel29)))
+                                    .addComponent(jLabel29)
+                                    .addComponent(jLabel26)))
                             .addGroup(jPanel20Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1425,8 +1440,8 @@ public class Home extends javax.swing.JFrame {
                                     .addComponent(jLabel46)
                                     .addComponent(jLabel40)
                                     .addComponent(jLabel39)
-                                    .addComponent(jLabel38)
-                                    .addComponent(jLabel41)))
+                                    .addComponent(jLabel41)
+                                    .addComponent(jLabel38)))
                             .addGroup(jPanel28Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1820,6 +1835,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
