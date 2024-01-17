@@ -7,6 +7,7 @@ package student;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.File;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
@@ -22,13 +23,14 @@ import javax.swing.table.DefaultTableModel;
  * @author Admins
  */
 public class Home extends javax.swing.JFrame {
-    
+
     Student student = new Student();
     int xx, xy;
     private String imagePath;
-    
+
     private DefaultTableModel model;
-    
+    private int rowIndex;
+
     /**
      * Creates new form Home
      */
@@ -500,15 +502,20 @@ public class Home extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Student's ID", "Student's Name", "Date Of Birth", "Gender", "Email", "Phone", "Address", "City", "Image Path"
+                "Student's ID", "Student's Name", "Date Of Birth", "Gender", "Email", "Phone", "Address", "City", "Country", "Image Path"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jTable1);
@@ -545,6 +552,11 @@ public class Home extends javax.swing.JFrame {
         jButton5.setBackground(new java.awt.Color(204, 204, 255));
         jButton5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton5.setText("Update");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setBackground(new java.awt.Color(204, 204, 255));
         jButton6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -1637,23 +1649,21 @@ public class Home extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public void init()
-    {
+    public void init() {
         tableViewStudent();
         jTextField1.setText(String.valueOf(student.getMax()));
     }
-    
-    private void tableViewStudent()
-    {
-        model = (DefaultTableModel)jTable1.getModel();
+
+    private void tableViewStudent() {
+        student.getStudentValue(jTable1, "");
+        model = (DefaultTableModel) jTable1.getModel();
         jTable1.setRowHeight(30);
         jTable1.setShowGrid(true);
         jTable1.setGridColor(Color.black);
         jTable1.setBackground(Color.white);
     }
-    
-    private void clearStudent()
-    {
+
+    private void clearStudent() {
         jTextField1.setText(String.valueOf(student.getMax()));
         jTextField1.setText(null);
         jTextField2.setText(null);
@@ -1668,106 +1678,90 @@ public class Home extends javax.swing.JFrame {
         jTable1.clearSelection();
         imagePath = null;
     }
-    
-    public boolean isEmptyStudent()
-    {
-        if (jTextField2.getText().isEmpty())
-        {
+
+    public boolean isEmptyStudent() {
+        if (jTextField2.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Student's name is missing");
             return false;
         }
-        
-        if (jDateChooser1.getDate() == null)
-        {
+
+        if (jDateChooser1.getDate() == null) {
             JOptionPane.showMessageDialog(this, "Student's date of birth is missing");
             return false;
         }
-        
-        if (jDateChooser1.getDate().compareTo(new Date()) > 0)
-        {
+
+        if (jDateChooser1.getDate().compareTo(new Date()) > 0) {
             JOptionPane.showMessageDialog(this, "No student from the future are allowed");
             return false;
         }
-        
-        if (jTextField4.getText().isEmpty())
-        {
+
+        if (jTextField4.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Student's email address is missing");
             return false;
         }
-        
-        if (!jTextField4.getText().matches("^.+@.+\\..+$"))
-        {
+
+        if (!jTextField4.getText().matches("^.+@.+\\..+$")) {
             JOptionPane.showMessageDialog(this, "Invalid email address");
             return false;
         }
-        
-        if (jTextField6.getText().isEmpty())
-        {
+
+        if (jTextField6.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Student's phone number is missing");
             return false;
         }
-        
-        if (jTextField6.getText().length() >= 15)
-        {
+
+        if (jTextField6.getText().length() >= 15) {
             JOptionPane.showMessageDialog(this, "Student's phone number is too long");
             return false;
         }
-        
-        if (jTextField7.getText().isEmpty())
-        {
+
+        if (jTextField7.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Student's address is missing");
             return false;
         }
-        
-        if (jTextField8.getText().isEmpty())
-        {
+
+        if (jTextField8.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Student's city is missing");
             return false;
         }
-        
-        if (jTextField3.getText().isEmpty())
-        {
+
+        if (jTextField3.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Student's country is missing");
             return false;
         }
-        
-        if (imagePath == null)
-        {
+
+        if (imagePath == null) {
             JOptionPane.showMessageDialog(this, "Please add your image");
             return false;
         }
-        
+
         return true;
     }
-    
+
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         int a = JOptionPane.showConfirmDialog(this, "Do you want to logout now?", "Select", JOptionPane.YES_NO_OPTION);
-        if (a == 0)
-        {
+        if (a == 0) {
             this.dispose();
         }
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         int a = JOptionPane.showConfirmDialog(this, "Do you want to logout now?", "Select", JOptionPane.YES_NO_OPTION);
-        if (a == 0)
-        {
+        if (a == 0) {
             this.dispose();
         }
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
         int a = JOptionPane.showConfirmDialog(this, "Do you want to logout now?", "Select", JOptionPane.YES_NO_OPTION);
-        if (a == 0)
-        {
+        if (a == 0) {
             this.dispose();
         }
     }//GEN-LAST:event_jButton27ActionPerformed
 
     private void jButton36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton36ActionPerformed
         int a = JOptionPane.showConfirmDialog(this, "Do you want to logout now?", "Select", JOptionPane.YES_NO_OPTION);
-        if (a == 0)
-        {
+        if (a == 0) {
             this.dispose();
         }
     }//GEN-LAST:event_jButton36ActionPerformed
@@ -1784,13 +1778,12 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MousePressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        for (double i = 0.1; i <= 1.0; i += 0.1)
-        {
+        for (double i = 0.1; i <= 1.0; i += 0.1) {
             String s = i + " ";
             float f = Float.valueOf(s);
             this.setOpacity(f);
             try {
-                
+
                 Thread.sleep(40);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
@@ -1803,26 +1796,35 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        if (isEmptyStudent())
-        {
-            int id = student.getMax();
-            String name = jTextField2.getText();
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            String date = dateFormat.format(jDateChooser1.getDate());
-            String gender = jComboBox1.getSelectedItem().toString();
-            String email = jTextField4.getText();
-            String phone = jTextField6.getText();
-            String address = jTextField7.getText();
-            String city = jTextField8.getText();
-            String country = jTextField3.getText();
-            student.insert(id, name, date, gender, email, phone, address, city, country, imagePath);
-            clearStudent();
+        if (isEmptyStudent()) {
+            if (!student.isEmailExist(jTextField4.getText())) {
+                if (!student.isPhoneExist(jTextField6.getText())) {
+                    int id = student.getMax();
+                    String name = jTextField2.getText();
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    String date = dateFormat.format(jDateChooser1.getDate());
+                    String gender = jComboBox1.getSelectedItem().toString();
+                    String email = jTextField4.getText();
+                    String phone = jTextField6.getText();
+                    String address = jTextField7.getText();
+                    String city = jTextField8.getText();
+                    String country = jTextField3.getText();
+                    student.insert(id, name, date, gender, email, phone, address, city, country, imagePath);
+                    jTable1.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "Student Name", "Date Of Birth", "Gender",
+                        "Email", "Phone Number", "Address", "City", "Country", "Image Path"}));
+                    student.getStudentValue(jTable1, "");
+                    clearStudent();
+                } else {
+                    JOptionPane.showMessageDialog(this, "This phone number is already exists");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "This email already exists");
+            }
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyTyped
-        if (!Character.isDigit(evt.getKeyChar()))
-        {
+        if (!Character.isDigit(evt.getKeyChar())) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField6KeyTyped
@@ -1830,43 +1832,69 @@ public class Home extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JFileChooser file = new JFileChooser();
         file.setCurrentDirectory(new File(System.getProperty("user.home")));
-        
+
         FileNameExtensionFilter filter = new FileNameExtensionFilter("*.image", "jpg", "gif", "png");
         file.addChoosableFileFilter(filter);
         int output = file.showSaveDialog(file);
-        if (output == JFileChooser.APPROVE_OPTION)
-        {
+        if (output == JFileChooser.APPROVE_OPTION) {
             File selectFile = file.getSelectedFile();
             String path = selectFile.getAbsolutePath();
             jLabelImage.setIcon(imageAdjust(path, null));
             imagePath = path;
-        }
-        else
-        {
+        } else {
             JOptionPane.showMessageDialog(this, "No image selected");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private ImageIcon imageAdjust(String path, byte[] pic)
-    {
-        ImageIcon myImage = null;
-        
-        if (path != null)
-        {
-            myImage = new ImageIcon(path);
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        model = (DefaultTableModel) jTable1.getModel();
+        rowIndex = jTable1.getSelectedRow();
+        jTextField1.setText(model.getValueAt(rowIndex, 0).toString());
+        jTextField2.setText(model.getValueAt(rowIndex, 1).toString());
+        try {
+            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(model.getValueAt(rowIndex, 2).toString());
+            jDateChooser1.setDate(date);
+        } catch (ParseException ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
         }
-        else
-        {
+
+        String gender = model.getValueAt(rowIndex, 3).toString();
+        if (gender.equals("Male")) {
+            jComboBox1.setSelectedIndex(0);
+        } else {
+            jComboBox1.setSelectedIndex(1);
+        }
+        jTextField4.setText(model.getValueAt(rowIndex, 4).toString());
+        jTextField6.setText(model.getValueAt(rowIndex, 5).toString());
+        jTextField7.setText(model.getValueAt(rowIndex, 6).toString());
+        jTextField8.setText(model.getValueAt(rowIndex, 7).toString());
+        jTextField3.setText(model.getValueAt(rowIndex, 8).toString());
+        String path = model.getValueAt(rowIndex, 9).toString();
+        imagePath = path;
+        jLabelImage.setIcon(imageAdjust(path, null)); // get image path and called imageAdjust method convert path to ImageIcon.
+
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private ImageIcon imageAdjust(String path, byte[] pic) {
+        ImageIcon myImage = null;
+
+        if (path != null) {
+            myImage = new ImageIcon(path);
+        } else {
             myImage = new ImageIcon(pic);
         }
-        
+
         Image img = myImage.getImage();
         Image newImage = img.getScaledInstance(jLabelImage.getWidth(), jLabelImage.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon icon = new ImageIcon(newImage);
-        
+
         return icon;
     }
-    
+
     /**
      * @param args the command line arguments
      */
