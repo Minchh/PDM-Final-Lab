@@ -28,6 +28,7 @@ import javax.swing.table.DefaultTableModel;
 public class Home extends javax.swing.JFrame {
 
     Student student = new Student();
+    Course course = new Course();
     int xx, xy;
     private String imagePath;
 
@@ -328,7 +329,7 @@ public class Home extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelImage, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                .addComponent(jLabelImage, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -450,7 +451,7 @@ public class Home extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)))
                 .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -692,6 +693,8 @@ public class Home extends javax.swing.JFrame {
         jPanel12.setBackground(new java.awt.Color(151, 183, 222));
         jPanel12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 255), 4, true));
 
+        jTextField5.setEditable(false);
+        jTextField5.setBackground(new java.awt.Color(204, 204, 204));
         jTextField5.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -706,6 +709,11 @@ public class Home extends javax.swing.JFrame {
         jButton10.setBackground(new java.awt.Color(204, 204, 255));
         jButton10.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
         jButton10.setText("Search");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -756,6 +764,8 @@ public class Home extends javax.swing.JFrame {
         jLabel22.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel22.setText("Course 5:");
 
+        jTextField10.setEditable(false);
+        jTextField10.setBackground(new java.awt.Color(204, 204, 204));
         jTextField10.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
         jComboBox2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -817,11 +827,11 @@ public class Home extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -947,6 +957,11 @@ public class Home extends javax.swing.JFrame {
         jButton17.setBackground(new java.awt.Color(204, 204, 255));
         jButton17.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton17.setText("Clear");
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
 
         jButton18.setBackground(new java.awt.Color(204, 204, 255));
         jButton18.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -1304,7 +1319,7 @@ public class Home extends javax.swing.JFrame {
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel25Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1544,7 +1559,7 @@ public class Home extends javax.swing.JFrame {
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel33Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1675,6 +1690,7 @@ public class Home extends javax.swing.JFrame {
     public void init() {
         tableViewStudent();
         jTextField1.setText(String.valueOf(student.getMax()));
+        jTextField5.setText(String.valueOf(course.getMax()));
     }
 
     private void tableViewStudent() {
@@ -1700,6 +1716,19 @@ public class Home extends javax.swing.JFrame {
         jLabelImage.setIcon(null);
         jTable1.clearSelection();
         imagePath = null;
+    }
+    
+    public void clearCourse()
+    {
+        jTextField5.setText(String.valueOf(course.getMax()));
+        jTextField10.setText(null);
+        jComboBox2.removeAllItems();
+        jComboBox5.setSelectedIndex(0);
+        jComboBox6.setSelectedIndex(0);
+        jComboBox7.setSelectedIndex(0);
+        jComboBox8.setSelectedIndex(0);
+        jComboBox9.setSelectedIndex(0);
+        jTable2.clearSelection();
     }
 
     public boolean isEmptyStudent() {
@@ -1992,6 +2021,33 @@ public class Home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        clearCourse();
+    }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        if (jTextField9.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "This enter a student id");
+        }
+        else
+        {
+            int id = Integer.parseInt(jTextField9.getText());
+            if (course.getId(id))
+            {
+                jComboBox2.removeAllItems();
+                int semester = course.countSemester(id);
+                if (semester >= 0)
+                {
+                    for (int i = 1; i <= semester + 1; i++)
+                    {
+                        jComboBox2.addItem(i + "");
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton10ActionPerformed
+
     private ImageIcon imageAdjust(String path, byte[] pic) {
         ImageIcon myImage = null;
 
@@ -2160,7 +2216,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable5;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
+    public static javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
