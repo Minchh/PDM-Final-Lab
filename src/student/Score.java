@@ -10,6 +10,8 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 
 public class Score {
@@ -123,6 +125,39 @@ public class Score {
 
         } catch (SQLException ex) {
             Logger.getLogger(Score.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    // get all the score from database score table
+    public void getScoreValue(JTable table, String searchValue) {
+        String sql = "select * from score where concat(id,student_id,semester) like ? order by id desc";
+
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, "%" + searchValue + "%");
+            ResultSet rs = ps.executeQuery();
+            DefaultTableModel model = (DefaultTableModel) table.getModel();
+            Object[] row;
+            while (rs.next()) {
+                row = new Object[14];
+                row[0] = rs.getInt(1);
+                row[1] = rs.getInt(2);
+                row[2] = rs.getInt(3);
+                row[3] = rs.getString(4);
+                row[4] = rs.getDouble(5);
+                row[5] = rs.getString(6);
+                row[6] = rs.getDouble(7);
+                row[7] = rs.getString(8);
+                row[8] = rs.getDouble(9);
+                row[9] = rs.getString(10);
+                row[10] = rs.getDouble(11);
+                row[11] = rs.getString(12);
+                row[12] = rs.getDouble(13);
+                row[13] = rs.getDouble(14);
+                model.addRow(row);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Course.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
