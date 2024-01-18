@@ -949,6 +949,11 @@ public class Home extends javax.swing.JFrame {
         jButton13.setBackground(new java.awt.Color(204, 204, 255));
         jButton13.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton13.setText("Save");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
 
         jButton16.setBackground(new java.awt.Color(204, 204, 255));
         jButton16.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -2047,6 +2052,24 @@ public class Home extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        if (jTextField10.getText().isEmpty() || jComboBox2.getItemCount() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "Student id or semester number is missing");
+        }
+        else
+        {
+            int id = course.getMax();
+            int sid = Integer.parseInt(jTextField10.getText());
+            int semesterNo = Integer.parseInt(jComboBox2.getSelectedItem().toString());
+            String course1 = jComboBox5.getSelectedItem().toString();
+            String course2 = jComboBox6.getSelectedItem().toString();
+            String course3 = jComboBox7.getSelectedItem().toString();
+            String course4 = jComboBox8.getSelectedItem().toString();
+            String course5 = jComboBox9.getSelectedItem().toString();
+        }
+    }//GEN-LAST:event_jButton13ActionPerformed
 
     private ImageIcon imageAdjust(String path, byte[] pic) {
         ImageIcon myImage = null;
