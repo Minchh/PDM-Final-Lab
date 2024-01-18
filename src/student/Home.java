@@ -9,6 +9,7 @@ import java.awt.Image;
 import java.awt.print.PrinterException;
 import java.io.File;
 import java.text.MessageFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,7 +37,7 @@ public class Home extends javax.swing.JFrame {
 
     private DefaultTableModel model;
     private int rowIndex;
-
+    NumberFormat nf = NumberFormat.getInstance();
     /**
      * Creates new form Home
      */
@@ -1381,11 +1382,11 @@ public class Home extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Student's ID", "Semester", "Course 1", "Score 1", "Course 2", "Score 2", "Course 3", "Score 3", "Course 4", "Score 4", "Course 5", "Score 5"
+                "ID", "Student's ID", "Semester", "Course 1", "Score 1", "Course 2", "Score 2", "Course 3", "Score 3", "Course 4", "Score 4", "Course 5", "Score 5", "Average"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, true, true
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1418,6 +1419,11 @@ public class Home extends javax.swing.JFrame {
         jButton22.setBackground(new java.awt.Color(204, 204, 255));
         jButton22.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton22.setText("Save");
+        jButton22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton22ActionPerformed(evt);
+            }
+        });
 
         jButton23.setBackground(new java.awt.Color(204, 204, 255));
         jButton23.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -2272,6 +2278,74 @@ public class Home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton14ActionPerformed
 
+    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
+        if (!jTextField13.getText().isEmpty())
+        {
+            if (!score.isIdExist(Integer.parseInt(jTextField11.getText())))
+            {
+                int sid = Integer.parseInt(jTextField13.getText());
+                int semesterNo = Integer.parseInt(jTextField15.getText());
+                if (!score.isSidSemesterNoExist(sid, semesterNo))
+                {
+                    if (isNumeric(jTextScore1.getText()) && isNumeric(jTextScore2.getText()) && isNumeric(jTextScore3.getText()) && isNumeric(jTextScore4.getText()) && isNumeric(jTextScore5.getText()))
+                    {
+                        int id = score.getMax();
+                        String course1 = jTextCourse1.getText();
+                        String course2 = jTextCourse2.getText();
+                        String course3 = jTextCourse3.getText();
+                        String course4 = jTextCourse4.getText();
+                        String course5 = jTextCourse5.getText();
+                        
+                        double score1 = Double.parseDouble(jTextScore1.getText());
+                        double score2 = Double.parseDouble(jTextScore2.getText());
+                        double score3 = Double.parseDouble(jTextScore3.getText());
+                        double score4 = Double.parseDouble(jTextScore4.getText());
+                        double score5 = Double.parseDouble(jTextScore5.getText());
+                        
+                        double average = (score1 + score2 + score3 + score4 + score5) / 5;
+                        
+                        nf.setMaximumFractionDigits(2);
+                        score.insert(id, sid, semesterNo, course1, course2, course3, course4, course5, score1, score2, score3, score4, score5, average);
+                    }
+                }
+                else
+                {
+                   JOptionPane.showMessageDialog(this, "Semester " + semesterNo + " score already added"); 
+                }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Score id already exists");
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "No student selected");
+        }
+    }//GEN-LAST:event_jButton22ActionPerformed
+
+    private boolean isNumeric(String s)
+    {
+        
+        try
+        {
+            double d = Double.parseDouble(s);
+            if (d >= 0.0 && d <= 4.0)
+            {
+                return true;
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Please enter a valid value, it must be between 0.0 and 4.0");
+                return false;
+            }
+        } catch (NumberFormatException e)
+        {
+            System.out.println(e);
+        }
+        return false;
+    }
+    
     private ImageIcon imageAdjust(String path, byte[] pic) {
         ImageIcon myImage = null;
 
